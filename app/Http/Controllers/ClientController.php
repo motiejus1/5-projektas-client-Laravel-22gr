@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+
+use App\Models\Company;
+
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 
@@ -28,7 +31,20 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create'); // client/create.blade.php
+
+        //uzduoties igyvendinimas
+        // $select_values = array();
+
+        // for($i=1;$i<=250; $i++) {
+        //     $select_values[] = $i; 
+        // }
+
+        $select_values = Company::all();
+
+        // 0: {id: 1 ; name: company1, type: 'MB', description: 'aprasymas' } 
+        // 1: {id: 2 ; name: company1, type: 'MB', description: 'aprasymas' } 
+
+        return view('client.create', ['select_values' => $select_values]); // client/create.blade.php
     }
 
     /**
@@ -71,7 +87,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('client.edit', ['client' => $client]);
+        $select_values = Company::all();
+        return view('client.edit', ['client' => $client, 'select_values' => $select_values]);
     }
 
     /**
