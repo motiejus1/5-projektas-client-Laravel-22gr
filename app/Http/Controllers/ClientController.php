@@ -32,6 +32,9 @@ class ClientController extends Controller
     public function create()
     {
 
+        // Pagal Laravel dokumentaciją Clients duomenų bazės lentelę užpildyti 30 netikrų klientų.
+
+
         //uzduoties igyvendinimas
         // $select_values = array();
 
