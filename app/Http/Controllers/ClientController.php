@@ -6,6 +6,8 @@ use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 
+use Illuminate\Http\Request;
+
 class ClientController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return view('client.index');
     }
 
     /**
@@ -25,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.create'); // client/create.blade.php
     }
 
     /**
@@ -34,9 +36,19 @@ class ClientController extends Controller
      * @param  \App\Http\Requests\StoreClientRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreClientRequest $request)
+    public function store(Request $request)
     {
-        //
+        $client = new Client;
+        //is kaires - duomenu bazes stulpelio pavadinimas | is desines - formos input laukelio vardas(name)
+        $client->name = $request->client_name;
+        $client->surname = $request->client_surname;
+        $client->username = $request->client_username;
+        $client->company_id = $request->client_companyid;
+        $client->image_url = $request->client_imageurl;
+
+        $client->save();
+
+        return redirect()->route('client.index');
     }
 
     /**
