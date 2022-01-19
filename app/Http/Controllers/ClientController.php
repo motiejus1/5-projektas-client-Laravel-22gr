@@ -16,8 +16,9 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('client.index');
+    {   
+        $clients = Client::all();
+        return view('client.index',['clients' => $clients]);
     }
 
     /**
@@ -59,7 +60,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return view('client.show', ['client' => $client]);
     }
 
     /**
@@ -70,7 +71,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('client.edit', ['client' => $client]);
     }
 
     /**
@@ -80,9 +81,17 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update(Request $request, Client $client)
     {
-        //
+        $client->name = $request->client_name;
+        $client->surname = $request->client_surname;
+        $client->username = $request->client_username;
+        $client->company_id = $request->client_companyid;
+        $client->image_url = $request->client_imageurl;
+
+        $client->save();
+
+        return redirect()->route('client.index');
     }
 
     /**
@@ -93,6 +102,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->route('client.index');
+
     }
 }
