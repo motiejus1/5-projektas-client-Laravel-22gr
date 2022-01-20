@@ -28,6 +28,9 @@ class CreateClientsTable extends Migration
             // $table->bigInteger('company_id'); //signed gali ir neigiamos -5
             
             $table->unsignedBigInteger('company_id'); // unsigned 1 teigiami skaiciai ....
+            $table->foreign('company_id')->references('id')->on('companies');
+            
+            
             $table->string('image_url', 300);
 
 
