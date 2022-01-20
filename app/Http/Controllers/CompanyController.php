@@ -99,8 +99,20 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
+        //kuris patikrintu ar kompanija kuria trinam turi klientu?
+         //gauti kompanijai priklausancius klientus
+        //juos suskaiciuoti
+        ///patikrinti ar tai nera 0
+        //leisti istrinti/neleisti
+
+        $clients = $company->companyClients; // clientu masyvas
+
+        if(count($clients) != 0) {
+            return redirect()->route('company.index')->with('error_message', 'Delete is not possible because company has clients');
+        }
+
         $company->delete();
-        return redirect()->route('company.index');
+        return redirect()->route('company.index')->with('success_message', 'Everything is fine');
 
 
     }

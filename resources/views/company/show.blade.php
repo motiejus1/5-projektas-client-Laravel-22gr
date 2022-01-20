@@ -17,6 +17,34 @@
         <p>Type : {{$company->type}}</p>
         <p>Description : {{$company->description}}</p>
 
+        {{-- $company->companyClients->name xxxx ???? --}}
+        @if(count($company->companyClients) == 0) 
+            <p>There is no clients </p>
+        @else 
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            @foreach ($company->companyClients as $client)
+                <tr>
+                    <td>{{$client->id}}</td>
+                    <td>{{$client->name}}</td>
+                    <td>{{$client->surname}}</td>
+                    <td><img src='{{$client->image_url}}' alt='{{$client->name}}' width="200" height="200"/></td>
+                    <td>
+                        <form method="post" action='{{route('client.destroy', [$client])}}''>
+                            @csrf
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+            </table>
+        @endif    
 
         <form method="post" action='{{route('company.destroy', [$company])}}''>
             @csrf
