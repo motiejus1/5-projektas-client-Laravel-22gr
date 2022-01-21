@@ -44,7 +44,6 @@ Route::prefix('companies')->group(function() {
 });
 
 //Types
-
 Route::prefix('types')->group(function() {
 
     Route::get('', 'App\Http\Controllers\TypeController@index')->name('type.index');

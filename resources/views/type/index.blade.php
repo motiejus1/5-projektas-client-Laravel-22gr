@@ -12,19 +12,18 @@
     <div class="container">
     <h1>Types Index</h1>
 
-    @if (session()->has('error_message'))
+
+@if (session()->has('error_message'))
         <div class="alert alert-danger">
             {{session()->get('error_message')}}
         </div>   
-    @endif
+@endif
 
-    @if (session()->has('success_message'))
+@if (session()->has('success_message'))
         <div class="alert alert-success">
             {{session()->get('success_message')}}
         </div>   
-    @endif
-
-
+@endif
 
 @if (count($types) == 0)
     <p>There is no type</p>
@@ -36,8 +35,9 @@
 <tr>
     <th>Id</th>
     <th>Name</th>
-    <th>Short name</th>
+    <th>Short Name</th>
     <th>Description</th>
+    <th>Total Companies</th>
     <th>Actions</th>
 </tr>
 
@@ -48,6 +48,7 @@
         <td>{{$type->name}}</td>
         <td>{{$type->short_name}}</td>
         <td>{{$type->description}}</td>
+        <td>{{count($type->typeCompanies)}}</td>
         <td>
             <a class="btn btn-primary" href="{{route('type.edit', [$type])}}">Edit</a>
             <a class="btn btn-secondary" href="{{route('type.show', [$type])}}">Show</a>

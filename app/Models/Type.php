@@ -11,8 +11,5 @@ class Type extends Model
 
     public function typeCompanies() {
         return $this->hasMany(Company::class, 'type_id', 'id');
-
     }
-
-
 }

@@ -19,7 +19,7 @@ class TypeController extends Controller
     public function index()
     {
         $types = Type::all();
-        return view('type.index',['types' => $types]); 
+        return view('type.index',['types'=>$types]);
     }
 
     /**
@@ -100,12 +100,13 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        $companies = $type->typeCompanies; // modelyje kol kas neegzistuoja
+        $companies = $type->typeCompanies; //visas kompanijas kurios priklaso tipui
+
         if(count($companies) != 0) {
-            return redirect()->route('type.index')->with('error_message', 'Delete is not possible because type has companies');
+            return redirect()->route('type.index')->with('error_message','Delete is not possible because type has companies');
         }
 
         $type->delete();
-        return redirect()->route('type.index')->with('success_message', 'Everything is fine');
+         return redirect()->route('type.index')->with('success_message', 'Everything is fine');
     }
 }

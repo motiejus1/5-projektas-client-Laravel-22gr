@@ -16,7 +16,7 @@ class CompanyFactory extends Factory
         return [
             // // ID
             // name(string)
-            // type_id(unsignedBigInt)
+            // type(string)
             // description(string)
 
             'name' => $this->faker->company(),

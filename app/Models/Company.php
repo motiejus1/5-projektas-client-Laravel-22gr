@@ -13,4 +13,8 @@ class Company extends Model
         return $this->hasMany(Client::class, 'company_id', 'id');
     }
 
+    public function companyType() {
+        return $this->belongsTo(Type::class, 'type_id', 'id');
+    }
+
 }

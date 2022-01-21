@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\DB;
 
+
 class TypeSeeder extends Seeder
 {
     /**
@@ -20,26 +21,26 @@ class TypeSeeder extends Seeder
         //Uždaroji akcinė bendrovė, UAB, ribota atsakomybė
         //Individuali įmonė, IĮ, neribota atsakomybė
         //Akcinė bendrovė, AB, ribota atsakomybė
-
         DB::table('types')->insert([
             'name' => 'Mažoji bendrija',
             'short_name' => 'MB',
-            'description' => 'ribota atsakomybė'
+            'description' => 'ribota atsakomybė',
         ]);
         DB::table('types')->insert([
             'name' => 'Uždaroji akcinė bendrovė',
             'short_name' => 'UAB',
-            'description' => 'ribota atsakomybė'
+            'description' => 'ribota atsakomybė',
         ]);
         DB::table('types')->insert([
             'name' => 'Individuali įmonė',
             'short_name' => 'IĮ',
-            'description' => 'neribota atsakomybė'
+            'description' => 'neribota atsakomybė',
         ]);
         DB::table('types')->insert([
             'name' => 'Akcinė bendrovė',
             'short_name' => 'AB',
-            'description' => 'ribota atsakomybė'
+            'description' => 'ribota atsakomybė',
         ]);
+
     }
 }

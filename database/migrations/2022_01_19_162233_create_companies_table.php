@@ -22,13 +22,10 @@ class CreateCompaniesTable extends Migration
             $table->id();
 
             $table->string('name');
-            // $table->string('type'); // UAB, AB, MB
-            $table->unsignedBigInteger('type_id');
+            
+            $table->unsignedBigInteger('type_id'); // UAB, AB,
             $table->foreign('type_id')->references('id')->on('types');
-
-            // $table->string('description');
             $table->text('description');
-
             $table->timestamps();
         });
     }

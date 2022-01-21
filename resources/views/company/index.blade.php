@@ -37,6 +37,7 @@
     <th>Name</th>
     <th>Type</th>
     <th>Description</th>
+    <th> Total Clients</th>
     <th>Actions</th>
 </tr>
 
@@ -45,8 +46,9 @@
     <tr>
         <td>{{$company->id}}</td>
         <td>{{$company->name}}</td>
-        <td>{{$company->type}}</td>
+        <td>{{$company->companyType->name}}</td>
         <td>{{$company->description}}</td>
+        <td>{{count($company->companyClients)}}</td>
         <td>
             <a class="btn btn-primary" href="{{route('company.edit', [$company])}}">Edit</a>
             <a class="btn btn-secondary" href="{{route('company.show', [$company])}}">Show</a>

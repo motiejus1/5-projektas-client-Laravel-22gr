@@ -22,7 +22,13 @@
 
 
             <input class="form-control" type='text' name="company_name" value="Test" placeholder="Company Name"/>
-            <input  class="form-control" type='text' name="company_type" value="Test" placeholder="Company Type"/>
+            {{-- <input  class="form-control" type='text' name="company_type" value="Test" placeholder="Company Type"/> --}}
+            <select class='form-select ' name='company_type'>
+                {{-- Visa tipu sarasa --}}
+                @foreach ($types as $type)
+                    <option value='{{$type->id}}'>{{$type->short_name}},{{$type->name}}</option>
+                @endforeach
+            </select>    
             <input  class="form-control" type='text' name="company_description" value="Test"  placeholder="Company Description"/>
             @csrf
 
